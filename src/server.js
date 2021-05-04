@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
     game_update()
   })
   socket.on('answer', (payload) => {
-    game.answer(socket.id, payload.answer)
+    game.answer(socket.id, payload.answer, payload.type)
     game_update()
   })
 })

@@ -14,7 +14,6 @@ module.exports = class Game {
 
   player_add(id, name) {
     this.players[id] = new Player(id, name)
-    console.log(this);
   }
 
   player_remove(id) {
@@ -23,7 +22,6 @@ module.exports = class Game {
 
   player_update(id, name) {
     this.players[id].name = name
-    console.log(this);
   }
 
   next() {
@@ -33,14 +31,29 @@ module.exports = class Game {
     }
   }
 
-  answer(id, answer) {
+  answer(id, answer, type) {
     if (this.done) {
       return;
     }
 
-    this.done = true;
-    this.players[id].increment_point();
-    console.log(this);
+    let card = this.cards[this.index] - 1;
+    let r = card % 12;
+    let d = Math.floor(card / 12);
+    let ok = false;
+    let v = ['i', 'o', 'n', 'b', 'h'];
+    if (v[d] == answer) {
+      if ((d <= 3 && r <= 6 || d == 4 && r <= 7) && type == 'button') {
+        ok = true;
+      }
+      if ((d <= 3 && r > 6 || d == 4 && r > 7) && type == 'input') {
+        ok = true;
+      }
+    }
+
+    if (ok) {
+      this.done = true;
+      this.players[id].increment_point();
+    }
   }
 
   shuffle() {
