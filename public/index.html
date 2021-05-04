@@ -1,0 +1,28 @@
+<html>
+
+<head></head>
+
+<body>
+    <h1>おばけキャッチ</h1>
+    <div>
+        <input id="player_update" type="text" placeholder="new name">
+        <div>ルール説明</div>
+        <div>オブジェクト=椅子、おばけ、ネズミ、瓶、本</div>
+        <div>オブジェクトと色が一致しているものが存在する: そのオブジェクトのボタンをクリック</div>
+        <div>オブジェクトと色が一致しているものが存在しない: 色、オブジェクトどちらにも一致しないボタンをクリック</div>
+        <div>本が存在する: 画面下部の入力フォームにオブジェクトを入力 (椅子=i, おばけ=o ネズミ=n, 瓶=b, 本=h)</div>
+    </div>
+    <img id="image" height="600" width="400" src="" alt="" />
+    <div id="player_list"></div>
+    <button id="next">next card</button>
+    <button class="answer_button" value="i" style="background-color: red">いす</button>
+    <button class="answer_button" value="o" style="background-color: white">おばけ</button>
+    <button class="answer_button" value="n" style="background-color: gray">ねずみ</button>
+    <button class="answer_button" value="b" style="background-color: green">びん</button>
+    <button class="answer_button" value="h" style="background-color: blue">ほん</button>
+    <input id="answer_input" type="text" placeholder="answer">
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/index.js"></script>
+
+</html>
